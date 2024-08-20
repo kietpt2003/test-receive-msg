@@ -13,8 +13,8 @@ rabbit.on('connection', () => {
     try {
         // Consume messages from a queue:
         const sub = rabbit.createConsumer({
-            queue: 'user-events',
-            queueOptions: { durable: true },
+            queue: 'test-queue',
+            queueOptions: { durable: true, autoDelete: true },
             qos: { prefetchCount: 2 },
             exchanges: [{ exchange: 'test-exchange', type: 'topic' }],
             queueBindings: [{ exchange: 'test-exchange', routingKey: '#' }],
